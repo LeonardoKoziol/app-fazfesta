@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <button id="executar" onClick="salva()">executar</button>
+    
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAnRVSLhqFphv53QG_Wq-Ca_5PXG_HCAkQ",
+    authDomain: "bikcraft-21d0a.firebaseapp.com",
+    databaseURL: "https://bikcraft-21d0a.firebaseio.com",
+    projectId: "bikcraft-21d0a",
+    storageBucket: "bikcraft-21d0a.appspot.com",
+    messagingSenderId: "807348582383"
+  };
+  firebase.initializeApp(config);
+</script>
+<script>
+    function salva(){
+        var db = firebase.database().ref();
+        db.set({
+			"usuarios" : {
+			"01" : {
+			"nome" : "kleber",
+			"curso" : "moda"
+		},
+			   "02" : {
+			   "nome" : "lucas",
+			   "curso" : "TI"
+			   }
+			}
+		});
+		
+		
+        // window.alert('ok');
+    }
+</script>
+</body>
+</html>

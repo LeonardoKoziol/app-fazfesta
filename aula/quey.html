@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+	<form id="teste">
+		<label> Nome: </label><input type="text" id="nome" name="nome"><br>
+		<br>
+		<label> Email: </label><input type="text" id="email" name="email"><br>
+		<br>
+		<label> Profissão: </label><input type="text" id="profissao" name="profissao"><br>
+		<br>
+		<input type="button" onClick="exibe()" value="enviar">
+	</form>
+		
+	<script type="text/javascript">
+
+		function botao ( form ){
+
+			var obj = {}
+			var item = form.querySelectorAll("input");
+
+			for(var i =0; i < ((item.length)-1); i++){
+				var elemento = item[i];
+				var nome = elemento.name;
+				var conteudo = elemento.value;
+
+				if (nome){
+					obj[nome] = conteudo;
+				}
+			}
+
+			return JSON.stringify(obj);
+		}
+
+		function exibe(){
+			
+			var fomulario = document.getElementByld("teste");
+			var result = botao(fomulario);
+			alert(result);
+		}
+	</script>
+</body>
+</html>
+
