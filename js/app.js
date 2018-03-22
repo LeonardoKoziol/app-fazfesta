@@ -1,7 +1,8 @@
 // Dom7
 var $$ = Dom7;
-$$('logoff').hide();
+$$('.logoff').hide();
 $$('.login-screen-open').show();
+
 
 // Framework7 App main instance
 var app  = new Framework7({
@@ -43,7 +44,7 @@ var mainView = app.views.create('.view-main', {
 });
 
 // Login Screen Demo
-$$('#my-login-screen .SingUp').on('click', function () {
+$$('#my-login-screen .SignUp').on('click', function () {
   var username = $$('#my-login-screen [name="email"]').val();
   var password = $$('#my-login-screen [name="password"]').val();
 
@@ -68,12 +69,13 @@ $$('#my-login-screen .SingUp').on('click', function () {
     });
   app.loginScreen.close('#my-login-screen');
   })
+  0
   app.loginScreen.close('#my-login-screen');
 });
 
 
 
-$$('#my-login-screen .SingIn').on('click', function () {
+$$('#my-login-screen .SignIn').on('click', function () {
   var username = $$('#my-login-screen [name="email"]').val();
   var password = $$('#my-login-screen [name="password"]').val();
 
@@ -82,7 +84,7 @@ $$('#my-login-screen .SingIn').on('click', function () {
     .signInWithEmailAndPassword(username,password)//Promisses
     .then( function () {
       app.dialog.alert('Bem vindo: ' + username);
-      this.$$('.toolbar-inner').text('Bem Vindo: ' + username + 'vc está logado!');
+      this.$$('.toolbar-inner').text('Bem Vindo: ' + username + ' vc está logado!');
       $$('.logoff').show();
       $$('.login-screen-open').hide();
       $$('input#email').val('');
@@ -104,7 +106,7 @@ $$('#my-login-screen .SingIn').on('click', function () {
 
 
 
-$$('#my-login-screen .logoff').on('click', function () {
+$$('#my-login-screen .Logoff').on('click', function () {
   app.loginScreen.close('#my-login-screen');
     $$('input#email').val('');
     $$('input#password').val('');
@@ -150,9 +152,9 @@ $$('#addButton').on('click', function () {
   var telefone = $$('#telefone').val();
   var mensagem = $$('#mensagem').val();
 
-  var formData = {Nome: nome, Email: email, Telefone: telefone, Mensagem: mensagem}
+  var formData = {Nome: nome, Email: email, Telefone: telefone, mensagem: mensagem}
   console.log(formData);
-  firebase.database().ref().child('orcamentos').push(formData)
+  firebase.database().ref().child('orcamento').push(formData)
   .then( function () {
     app.dialog.alert('Orçamento Efetuado com Sucesso');
     $$('input#nome').val('');
@@ -164,3 +166,24 @@ $$('#addButton').on('click', function () {
     console.error(error)
   })
 });
+
+$$('#my-login-screen .login-screen-close').on('click', function () {
+  $$('input#email').val('');
+  $$('input#password').val('');
+})
+$$('.logoff').on('click', function () {
+  firebase
+    .auth()
+    .signOut()
+    .then( function () {
+      this.$$('.toolbar-inner').text('Usuário não autenticado');
+      app.dialog.alert('Usuário não autenticado');
+      $$('input#email').val('');
+      $$('input#password').val('');
+      $$('.logoff').hide();
+      $$('.login-screen-open').show();
+    }, function(error){
+      console.error(error)
+    })  
+})
+

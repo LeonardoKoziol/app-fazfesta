@@ -1,4 +1,4 @@
-// Initialize Firebase
+ // Initialize Firebase
   var config = {
     apiKey: "AIzaSyAHFQYF3QV4KYhvZkTnNKmnXCkB7YEBpoQ",
     authDomain: "fazfesta-c56c9.firebaseapp.com",
