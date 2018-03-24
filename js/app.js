@@ -185,5 +185,5 @@ $$('.logoff').on('click', function () {
     }, function(error){
       console.error(error)
     })  
-})
+  })
 
