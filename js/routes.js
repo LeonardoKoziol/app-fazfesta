@@ -8,7 +8,7 @@ routes = [
     url: './inserir_firebase.html',
   },
   {
-    path: '/portfolio/',
+    path: '/ze/',
     url: './portfolio.html',
   },
   {
@@ -27,6 +27,10 @@ routes = [
   {
     path: '/left-page-2/',
     url: './pages/left-page-2.html',
+  },
+    {
+    path: '/estoque/',
+    url: './estoque.html',
   },
   // Page Loaders & Router
   {
